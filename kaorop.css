@@ -1,0 +1,285 @@
+.tap_on {
+    width: 9000px;
+    height: 90px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 8px 6px rgba(0,0,0,0.25); /* เงา */
+    position: absolute; 
+    top: -5px;
+    left: 0px;
+    z-index: 1; 
+}
+.logo {
+    width: 55px;
+    height: 55px;
+    transform: rotate(360deg); 
+    position: absolute; 
+    top: 15px;
+    left: 40px;
+    z-index: 2; 
+}
+h1 {
+    font-size: 20px; 
+    font-family: 'Kanit-SemiBold', sans-serif;
+    color : rgb(47, 47, 47);
+    position: absolute;
+    top: 15px;
+    left: 120px;
+    z-index: 3;
+}
+@font-face {
+    font-family: 'Kanit-SemiBold';
+    src: url('KanitFont/Kanit-SemiBold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Kanit-ExtraLight';
+    src: url('KanitFont/Kanit-ExtraLight.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Kanit-Regular';
+    src: url('KanitFont/Kanit-Regular.ttf') format('truetype');
+}
+h2 {
+    font-size: 40px; 
+    font-family: 'Kanit-SemiBold', sans-serif;
+    color : rgb(255, 255, 255);
+    position: absolute;
+    top: 100px;
+    left: 530px;
+    z-index: 3;
+    animation: slideUp 1s ease-out forwards; 
+}
+h7 {
+    font-size: 20px; 
+    font-family: 'Kanit-SemiBold', sans-serif;
+    color : rgb(255, 255, 255);
+    position: absolute;
+    top: 185px;
+    left: 572px;
+    z-index: 3;
+    animation: slideUp 1s ease-out forwards; 
+}
+h3 {
+    font-size: 40px; 
+    font-family: 'Kanit-SemiBold', sans-serif;
+    color : rgb(39, 148, 46);
+    position: absolute;
+    top: 430px;
+    left: 100px;
+    z-index: 3;
+    animation: slideUp2 1.2s ease-out forwards; 
+}
+h8 {
+    font-size: 40px; 
+    font-family: 'Kanit-SemiBold', sans-serif;
+    color : rgb(39, 148, 46);
+    position: absolute;
+    top: 1320px;
+    left: 100px;
+    z-index: 3;
+}
+h4 {
+    font-size: 20px; 
+    font-family: 'Kanit-ExtraLight', sans-serif;
+    color : rgb(0, 0, 0);
+    position: absolute;
+    top: 530px;
+    left: 150px;
+    z-index: 3;
+    animation: slideUp2 1.2s ease-out forwards; 
+}
+h5 {
+    font-size: 20px; 
+    font-family: 'Kanit-ExtraLight', sans-serif;
+    color : rgb(0, 0, 0);
+    position: absolute;
+    top: 555px;
+    left: 100px;
+    z-index: 3;
+    animation: slideUp2 1.2s ease-out forwards; 
+}
+h6 {
+    font-size: 20px; 
+    font-family: 'Kanit-ExtraLight', sans-serif;
+    color : rgb(0, 0, 0);
+    position: absolute;
+    top: 575px;
+    left: 100px;
+    z-index: 3;
+    animation: slideUp2 1.2s ease-out forwards; 
+}
+h10 {
+    font-size: 25px; 
+    font-family: 'Kanit-Regular', sans-serif;
+    color : rgb(0, 0, 0);
+    position: absolute;
+    top: 1750px;
+    left: 370px;
+    z-index: 3;
+}
+h10:hover {
+    color: #2600ff;
+    text-decoration: underline;
+}
+h11 {
+    font-size: 25px; 
+    font-family: 'Kanit-Regular', sans-serif;
+    color : rgb(0, 0, 0);
+    position: absolute;
+    top: 1750px;
+    left: 570px;
+    z-index: 3;
+
+    display: inline-block; /* สำคัญ: ทำให้กล่องล้อมรอบเนื้อหาพอดี */
+    padding: 5px 20px; /* ระยะห่างระหว่างตัวอักษรกับขอบกรอบ */
+    color: #2600ff;
+    background-color: #c3d3f3;
+    border-radius: 30px;
+}
+h11:hover {
+    text-decoration: underline;
+}
+h12 {
+    font-size: 25px; 
+    font-family: 'Kanit-Regular', sans-serif;
+    color : rgb(0, 0, 0);
+    position: absolute;
+    top: 1750px;
+    left:800px;
+    z-index: 3;
+}
+h12:hover {
+    color: #2600ff;
+    text-decoration: underline;
+}
+h14 {
+    font-size: 25px; 
+    font-family: 'Kanit-Regular', sans-serif;
+    color : rgb(0, 0, 0);
+    position: absolute;
+    top: 1395px;
+    left: 140px;
+    z-index: 3;
+}
+h15 {
+    font-size: 25px; 
+    font-family: 'Kanit-Regular', sans-serif;
+    color : rgb(0, 0, 0);
+    position: absolute;
+    top: 1440px;
+    left: 140px;
+    z-index: 3;
+}
+h16 {
+    font-size: 25px; 
+    font-family: 'Kanit-Regular', sans-serif;
+    color : rgb(0, 0, 0);
+    position: absolute;
+    top: 1485px;
+    left: 140px;
+    z-index: 3;
+}
+.cr {
+    font-size: 20px; 
+    font-family: 'Kanit-ExtraLight', sans-serif;
+    color : rgb(0, 0, 0);
+    position: absolute;
+    top: 750px;
+    left: 1100px;
+    z-index: 5;
+}
+.cr a {
+    color: #0d00ff;
+    text-decoration: underline;
+}
+.bg {
+    height: 1800px; 
+    width: 1300px;
+    position: absolute;  
+    top: -250px;   
+    left: 0px;
+    z-index: 0;
+    filter: brightness(50%);
+    animation: slideUp 1s ease-out forwards; 
+}
+.white {
+    width: 9000px;
+    height: 1500px;
+    background-color: rgb(255, 255, 255);
+    position: absolute; 
+    top: 400px;
+    left: 0px;
+    z-index: 1;
+    animation: slideUp2 1.2s ease-out forwards; 
+}
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);  /* เริ่มจากเลื่อนลงมา */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);     /* กลับไปตำแหน่งปกติ */
+  }
+}
+@keyframes slideUp2 {
+  0% {
+    transform: translateY(80px);  /* เริ่มจากเลื่อนลงมา */
+  }
+  100% {
+    transform: translateY(0);     /* กลับไปตำแหน่งปกติ */
+  }
+}
+.video-container {
+  position: relative;
+  width: 700px;          
+  height: 400px;          
+  margin: 50px auto;      
+  overflow: hidden;
+  border-radius: 20px;    /* มุมโค้ง */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  z-index: 4;
+  top: 800px;
+}
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.start-training {
+    position: absolute;
+    top: 1070px; 
+    left: 420px;
+    width: 400px;
+    height: 100px;
+    font-size: 40px;
+    padding: 10px 32px;
+    background: #006414;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    cursor: pointer;
+    z-index: 10;
+    display: inline-block;
+    position: relative;
+    transition: filter 0.3s ease-in-out;
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.start-training:hover {
+  filter: brightness(60%);  
+  cursor: pointer;
+  transform: translateY(-10px);
+  transform: scale(1.03);
+}
+.tap_under {
+    width: 5000px;
+    height: 150px;
+    background-color: rgb(15, 15, 15);
+    position: absolute; 
+    top: 1880px;
+    left: 0px;
+    z-index: 3;
+}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="c:\Users\User\Downloads\ดีไซน์ที่ยังไม่ได้ตั้งชื่อ (3)-Photoroom.png">
+    <link rel="stylesheet" href="tutorial_Kaorop.css">
+    <title>ท่าเคารพ</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <h1>รด. รอเด้า</h1>
+    <h6>ผลการประเมิน</h6>
+    <h7>เกณฑ์ของคุณอยู่ในระดับ:</h7>
+    <h2>Score:</h2>
+    <h3>Feedback:</h3>
+    <h4 id="score">-</h4>
+    <h5 id="feedback">-</h5>
+    <h9 id="level">-</h9>
+
+    <div class = "tap_under"></div>
+    
+    <div class="camera-permission" id="cameraPermission"></div>
+    
+    <div class="countdown" id="countdown" style="display:none;"></div>
+
+    <canvas id="canvas" width="400" height="300" style="display:none;"></canvas>
+    <video id="camera" autoplay playsinline></video>
+
+    <audio id="startSound" src="c:\\Users\\User\\Downloads\\Wantayahat.mp3"></audio>
+
+    <script>
+const video = document.getElementById("camera");
+const canvas = document.getElementById("canvas");
+const countdownElement = document.getElementById('countdown');
+const cameraPermissionElement = document.getElementById('cameraPermission');
+const ctx = canvas.getContext("2d");
+const startSound = document.getElementById('startSound');
+let cameraStarted = false;
+let sessionId = null;
+let frameInterval = null;
+
+async function startCamera() {
+  try {
+    cameraPermissionElement.textContent = "กรุณากดอนุญาติ...";
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    video.srcObject = stream;
+    cameraStarted = true;
+    video.style.display = "block";
+
+    startSound.play().catch(err => console.log("ไม่สามารถเล่นเสียงได้:", err));
+    cameraPermissionElement.style.display = "none";
+    startCountdown();
+
+  } catch (error) {
+    cameraPermissionElement.textContent = "ไม่สามารถเข้าถึงกล้องได้: " + error.message;
+  }
+}
+
+function startCountdown() {
+  let count = 3;
+  countdownElement.style.display = "block";
+  countdownElement.textContent = count;
+
+  const countdownInterval = setInterval(() => {
+    count--;
+    if (count > 0) {
+      countdownElement.textContent = count;
+    } else {
+      countdownElement.textContent = "";
+      countdownElement.style.display = "none";
+      clearInterval(countdownInterval);
+      startSession(); // เริ่ม session ใหม่ก่อน
+    }
+  }, 1000);
+}
+
+async function startSession() {
+  try {
+    const res = await fetch("http://127.0.0.1:8000/start_analysis", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({}),
+    });
+    const data = await res.json();
+    if (data.session_id) {
+      sessionId = data.session_id;
+      console.log("🎯 เริ่ม session:", sessionId);
+      startSendingFrames();
+    }
+  } catch (err) {
+    console.error("❌ ไม่สามารถเริ่ม session ได้:", err);
+  }
+}
+
+function startSendingFrames() {
+  frameInterval = setInterval(async function () {
+    if (!cameraStarted || !sessionId) return;
+
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    const image = canvas.toDataURL("image/jpeg");
+
+    try {
+      const res = await fetch("http://127.0.0.1:8000/analyze_pose", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ image, session_id: sessionId }),
+      });
+      const data = await res.json();
+
+      if (data.status === "completed") {
+        // ✅ หยุดส่งภาพเมื่อวิเคราะห์เสร็จ
+        clearInterval(frameInterval);
+        console.log("✅ การวิเคราะห์เสร็จสิ้น");
+
+        document.getElementById("score").textContent = data.final_score + "%";
+        document.getElementById("feedback").textContent = data.feedback;
+        document.getElementById("level").textContent = data.level;
+      } else if (data.status === "waiting") {
+        // ยังไม่ครบเวลา → ไม่อัปเดต UI
+        console.log("⌛ รอครบเวลา...");
+      }
+
+    } catch (err) {
+      console.error("ส่งข้อมูลล้มเหลว:", err);
+    }
+  }, 1000);
+}
+
+startCamera();
+    </script>
+    
+    <img class="logo" src="c:\Users\User\Downloads\ดีไซน์ที่ยังไม่ได้ตั้งชื่อ (3)-Photoroom.png" alt="logo" />
+    <div class="tap_on"></div>
+    <img class="bg" src="c:\Users\User\Downloads\ดีไซน์ที่ยังไม่ได้ตั้งชื่อ (1).jpg" alt="background" />
+    <div class="white"></div>
+    <div class="white2"></div>
+    <div class="white3"></div>
+    <a href="kaorop.html">
+        <h11>Tutorial</h11>
+    </a>
+
+    <a href="tutorial_Kaorop.html">
+        <h12>Training</h12>
+    </a>
+
+    <a href="index.html">
+        <h10>Home</h10>
+    </a>
+</body>
+</html>
