@@ -3,3 +3,6 @@ uvicorn
 python-multipart
 jinja2
 gunicorn
+opencv-python-headless
+mediapipe
+numpy
